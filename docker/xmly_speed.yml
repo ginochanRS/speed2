@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  xmly_speed:
+    image: d.artifactory.maxtropy.com/customer-center-service:1.1.3-RC2
+    networks:
+      - central-service
+    depends_on:
+      - redis
+      - consul
+      - postgresql
+      - cas
+    ports:
+      - 8082:8082
+    environment:
+      - JAVA_OPTS=-Dspring.cloud.consul.host=consul
+
